@@ -1,6 +1,5 @@
 package p21;
 
-
 public abstract class Karyawan implements Biodata{
     private String nik;
     private String nama;
@@ -13,7 +12,7 @@ public abstract class Karyawan implements Biodata{
         this.nik = nik;
     }
     
-    
+    //Interface Biodata
     @Override
     public void setNama(String nama) {
         this.nama = nama;
@@ -23,7 +22,4 @@ public abstract class Karyawan implements Biodata{
     public String getNama() {
         return nama;
     }
-    
-    
-    
 }
