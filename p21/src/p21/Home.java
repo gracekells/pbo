@@ -3,7 +3,6 @@ package p21;
 import java.io.*;
 import mdp.Direktur;
 public class Home {
-
   
     public static void main(String[] args) throws IOException{
         
