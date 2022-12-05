@@ -1,8 +1,10 @@
+import javax.swing.JOptionPane;
 
 public class Mahasiswa {
     private String npm;
     private String nama;
     private String prodi;
+    private String hobi;  
 
     public String getNpm() {
         return npm;
@@ -27,11 +29,25 @@ public class Mahasiswa {
     public void setProdi(String prodi) {
         this.prodi = prodi;
     }
+
+    public String getHobi() {
+        return hobi;
+    }
+
+    public void setHobi(String hobi) {
+        this.hobi = hobi;
+    }
+    
     
     public void tampilMahasiswa(){
-        System.out.println("NPM \t= " + npm);
-        System.out.println("Nama \t= " + nama);
-        System.out.println("Prodi \t= " + prodi);
+        JOptionPane.showMessageDialog(null, 
+                "NPM \t= " + npm + "\n" + 
+                "Nama \t= " + nama + "\n" + 
+                "Prodi \t= " + prodi + "\n" + 
+                "Hobi \t= " + hobi);
+//        System.out.println("NPM \t= " + npm);
+//        System.out.println("Nama \t= " + nama);
+//        System.out.println("Prodi \t= " + prodi);
               
     }
             

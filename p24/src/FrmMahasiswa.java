@@ -39,6 +39,9 @@ public class FrmMahasiswa extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtNama = new javax.swing.JTextField();
         txtProdi = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtHobi = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel7.setText(":");
 
@@ -86,6 +89,17 @@ public class FrmMahasiswa extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText(":");
+
+        txtHobi.setText(" ");
+        txtHobi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHobiActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Hobi");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,19 +116,23 @@ public class FrmMahasiswa extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel8))
+                                    .addComponent(jLabel5)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8)))
+                                .addComponent(jLabel9)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtHobi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtProdi, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNpm, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -140,7 +158,12 @@ public class FrmMahasiswa extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel8)
                     .addComponent(txtProdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9)
+                    .addComponent(txtHobi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(btnTampil)
                 .addGap(73, 73, 73))
         );
@@ -149,7 +172,18 @@ public class FrmMahasiswa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTampilActionPerformed
-        // TODO add your handling code here:
+        //mengambil nilai dari textfield
+        String npm = txtNpm.getText();
+        String nama = txtNama.getText();
+        String prodi = txtProdi.getText();
+        String hobi = txtHobi.getText();
+        
+        mhs.setNpm(npm);
+        mhs.setNama(nama);
+        mhs.setProdi(prodi);
+        mhs.setHobi(hobi);
+        
+        mhs.tampilMahasiswa();
     }//GEN-LAST:event_btnTampilActionPerformed
 
     private void txtNpmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNpmActionPerformed
@@ -163,6 +197,10 @@ public class FrmMahasiswa extends javax.swing.JFrame {
     private void txtProdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProdiActionPerformed
+
+    private void txtHobiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHobiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHobiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +240,7 @@ public class FrmMahasiswa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTampil;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -209,6 +248,8 @@ public class FrmMahasiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtHobi;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNpm;
     private javax.swing.JTextField txtProdi;
