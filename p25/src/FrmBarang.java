@@ -8,12 +8,16 @@
  * @author u-mdp
  */
 public class FrmBarang extends javax.swing.JFrame {
+    
+    Barang brg = new Barang();
 
     /**
      * Creates new form FrmBarang
      */
     public FrmBarang() {
         initComponents();
+        
+        tbBarang.setModel(brg.tampilBarang());
     }
 
     /**

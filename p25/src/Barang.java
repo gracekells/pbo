@@ -1,6 +1,5 @@
-//import javax.swing.Default
-        
 import javax.swing.table.DefaultTableModel;
+
 public class Barang {
     private String kode;
     private String nama;
