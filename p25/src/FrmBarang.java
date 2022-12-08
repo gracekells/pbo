@@ -10,6 +10,8 @@
 public class FrmBarang extends javax.swing.JFrame {
     
     Barang brg = new Barang();
+    
+    public  String kondisi = "";
 
     /**
      * Creates new form FrmBarang
@@ -297,10 +299,12 @@ public class FrmBarang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBaruActionPerformed
+        kondisi = "Baru";
         // TODO add your handling code here:
     }//GEN-LAST:event_rbBaruActionPerformed
 
     private void rbBekasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBekasActionPerformed
+        kondisi = "Bekas";
         // TODO add your handling code here:
     }//GEN-LAST:event_rbBekasActionPerformed
 
@@ -325,7 +329,20 @@ public class FrmBarang extends javax.swing.JFrame {
     }//GEN-LAST:event_txtJumlahActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        // TODO add your handling code here:
+        String kode = txtKodeBarang.getText();
+        String nama = txtNamaBarang.getText();
+        String jenis = (String) cmbJenisBarang.getSelectedItem();
+        int harga = Integer.parseInt(txtHarga.getText());
+        int jumlah = Integer.parseInt(txtHarga.getText());
+        
+        brg.setKode(kode);
+        brg.setNama(nama);
+        brg.setJenis(jenis);
+        brg.setHarga(harga);
+        brg.setJumlah(jumlah);
+        
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnBersihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBersihActionPerformed
