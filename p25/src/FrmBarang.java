@@ -1,3 +1,4 @@
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -299,11 +300,12 @@ public class FrmBarang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBaruActionPerformed
-        kondisi = "Baru";
+        brg.setKondisi("Baru");
         // TODO add your handling code here:
     }//GEN-LAST:event_rbBaruActionPerformed
 
     private void rbBekasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBekasActionPerformed
+        brg.setKondisi("Bekas");
         kondisi = "Bekas";
         // TODO add your handling code here:
     }//GEN-LAST:event_rbBekasActionPerformed
@@ -341,6 +343,18 @@ public class FrmBarang extends javax.swing.JFrame {
         brg.setHarga(harga);
         brg.setJumlah(jumlah);
         
+        //simpan data ke JTable tbBarang
+        Object[] barisData = {
+            brg.getKode(),
+            brg.getNama(),
+            brg.getJenis(),
+            brg.getKondisi(),
+            brg.getHarga(),
+            brg.getJumlah()
+        };
+        
+        DefaultTableModel model = (DefaultTableModel) tbBarang.getModel();
+        model.addRow(barisData);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
