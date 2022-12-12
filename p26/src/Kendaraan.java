@@ -1,3 +1,4 @@
+import javax.swing.table.DefaultTableModel;
 
 public class Kendaraan {
     
@@ -64,6 +65,21 @@ public class Kendaraan {
     
     public double getTotal(){
         return (harga * lama) - getDiskon();
+    }
+    
+    public DefaultTableModel tampilData(){
+        String[] kolom = {
+            "Kode",
+            "Nama",
+            "Warna",
+            "Harga",
+            "Lama",
+            "Total"
+        };
+        
+        DefaultTableModel model = new DefaultTableModel(null, kolom);
+        return model;
+        
     }
     
 }

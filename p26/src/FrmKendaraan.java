@@ -1,3 +1,4 @@
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +10,17 @@
  */
 public class FrmKendaraan extends javax.swing.JFrame {
 
+    Kendaraan kdrn = new Kendaraan();
+    
+    public String member = "";
+    
     /**
      * Creates new form FrmKendaraan
      */
     public FrmKendaraan() {
         initComponents();
+        
+        tbKendaraan.setModel(kdrn.tampilData());
     }
 
     /**
@@ -155,6 +162,11 @@ public class FrmKendaraan extends javax.swing.JFrame {
 
         buttonGroup1.add(rbYa);
         rbYa.setText("Ya");
+        rbYa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbYaActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rbTidak);
         rbTidak.setText("Tidak");
@@ -163,10 +175,6 @@ public class FrmKendaraan extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(38, 45, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSimpan)
@@ -221,6 +229,10 @@ public class FrmKendaraan extends javax.swing.JFrame {
                             .addComponent(txtHargaSewa, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLamaSewa, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,10 +256,7 @@ public class FrmKendaraan extends javax.swing.JFrame {
                     .addComponent(cmbWarnaKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10))
+                    .addComponent(jLabel8)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -255,7 +264,8 @@ public class FrmKendaraan extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(txtLamaSewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtLamaSewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -303,24 +313,24 @@ public class FrmKendaraan extends javax.swing.JFrame {
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         String kode = txtKodeKendaraan.getText();
         String nama = txtNamaKendaraan.getText();
-        String jenis = (String) cmbWarnaKendaraan.getSelectedItem();
-        int harga = Integer.parseInt(txtHarga.getText());
-        int jumlah = Integer.parseInt(txtJumlah.getText());
+        String warna = (String) cmbWarnaKendaraan.getSelectedItem();
+        int harga = Integer.parseInt(txtHargaSewa.getText());
+        int total = Integer.parseInt(txtTotalBayar.getText());
 
-        brg.setKode(kode);
-        brg.setNama(nama);
-        brg.setJenis(jenis);
-        brg.setHarga(harga);
-        brg.setJumlah(jumlah);
+        kdrn.setKode(kode);
+        kdrn.setNama(nama);
+        kdrn.setWarna(warna);
+        kdrn.setHarga(harga);
+        //kdrn.setTotal(total);
 
         //simpan data ke JTable tbBarang
         Object[] barisData = {
-            brg.getKode(),
-            brg.getNama(),
-            brg.getJenis(),
-            brg.getKondisi(),
-            brg.getHarga(),
-            brg.getJumlah()
+            kdrn.getKode(),
+            kdrn.getNama(),
+            kdrn.getWarna(),
+            kdrn.getMember(),
+            kdrn.getHarga(),
+            kdrn.getLama()
         };
 
         DefaultTableModel model = (DefaultTableModel) tbKendaraan.getModel();
@@ -347,6 +357,10 @@ public class FrmKendaraan extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void rbYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbYaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbYaActionPerformed
 
     /**
      * @param args the command line arguments
