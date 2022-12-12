@@ -277,10 +277,11 @@ public class FrmBarang extends javax.swing.JFrame {
                     .addComponent(rbBaru)
                     .addComponent(rbBekas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -298,7 +299,17 @@ public class FrmBarang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void bersihLayar(){
+        txtKodeBarang.setText("");
+        txtNamaBarang.setText("");
+        cmbJenisBarang.setSelectedItem("Kertas");
+        buttonGroup1.clearSelection();
+        txtHarga.setText("");
+        txtJumlah.setText("");
+        
+    }
+    
     private void rbBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBaruActionPerformed
         brg.setKondisi("Baru");
         // TODO add your handling code here:
@@ -306,7 +317,6 @@ public class FrmBarang extends javax.swing.JFrame {
 
     private void rbBekasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBekasActionPerformed
         brg.setKondisi("Bekas");
-        kondisi = "Bekas";
         // TODO add your handling code here:
     }//GEN-LAST:event_rbBekasActionPerformed
 
@@ -335,7 +345,7 @@ public class FrmBarang extends javax.swing.JFrame {
         String nama = txtNamaBarang.getText();
         String jenis = (String) cmbJenisBarang.getSelectedItem();
         int harga = Integer.parseInt(txtHarga.getText());
-        int jumlah = Integer.parseInt(txtHarga.getText());
+        int jumlah = Integer.parseInt(txtJumlah.getText());
         
         brg.setKode(kode);
         brg.setNama(nama);
@@ -356,14 +366,26 @@ public class FrmBarang extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tbBarang.getModel();
         model.addRow(barisData);
         
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnBersihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBersihActionPerformed
+        bersihLayar();
+        
+        //membersihkan data di JTabel
+        DefaultTableModel model = (DefaultTableModel) tbBarang.getModel();
+        
+        for (int baris = 0; baris < tbBarang.getRowCount(); baris++){
+            model.setRowCount(0);
+        }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBersihActionPerformed
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        System.exit(0);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKeluarActionPerformed
 
