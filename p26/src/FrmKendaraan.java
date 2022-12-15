@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -178,6 +179,11 @@ public class FrmKendaraan extends javax.swing.JFrame {
         });
 
         btnHapusSemua.setText("HAPUS SEMUA");
+        btnHapusSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusSemuaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,39 +333,46 @@ public class FrmKendaraan extends javax.swing.JFrame {
         String kode = txtKodeKendaraan.getText();
         String nama = txtNamaKendaraan.getText();
         String warna = (String) cmbWarnaKendaraan.getSelectedItem();
-        int harga = Integer.parseInt(txtHargaSewa.getText());
-        int total = Integer.parseInt(txtTotalBayar.getText());
-
+        
         kdrn.setKode(kode);
         kdrn.setNama(nama);
         kdrn.setWarna(warna);
-        kdrn.setHarga(harga);
-        //kdrn.setTotal(total);
-
-        //simpan data ke JTable tbBarang
-        Object[] barisData = {
-            kdrn.getKode(),
-            kdrn.getNama(),
-            kdrn.getWarna(),
-            kdrn.getMember(),
-            kdrn.getHarga(),
-            kdrn.getLama()
+        //Untuk harga, lama, dan total, tidak perlu disimpan ke variabel lagi. 
+        //karena sudah pada saat di radio button member
+        
+        //memasukan data ke JTable tbKendaraan
+        Object[]baris = {
+            kdrn.getKode(), kdrn.getNama(),kdrn.getWarna(),kdrn.getHarga(), kdrn.getLama(), kdrn.getTotal()
         };
-
+        
         DefaultTableModel model = (DefaultTableModel) tbKendaraan.getModel();
-        model.addRow(barisData);
+        model.addRow(baris);
+        bersihLayar();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
 
+    public void bersihLayar(){
+        txtKodeKendaraan.setText("");
+        txtNamaKendaraan.setText("");
+        cmbWarnaKendaraan.setSelectedItem("Hitam");
+        txtHargaSewa.setText("");
+        buttonGroup1.clearSelection();
+        txtTotalBayar.setText("");
+    }
+    
+            
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
         bersihLayar();
 
         //membersihkan data di JTabel
         DefaultTableModel model = (DefaultTableModel) tbKendaraan.getModel();
 
-        for (int baris = 0; baris < tbKendaraan.getRowCount(); baris++){
-            model.setRowCount(0);
+        if(tbKendaraan.getRowCount() > 0){
+            int baris = tbKendaraan.getSelectedRow();
+            model.removeRow(baris);
+        } else {
+            JOptionPane.showMessageDialog(null, "Data Harus Dipilih");
         }
 
         // TODO add your handling code here:
@@ -386,6 +399,15 @@ public class FrmKendaraan extends javax.swing.JFrame {
         kdrn. 
         // TODO add your handling code here:
     }//GEN-LAST:event_rbTidakActionPerformed
+
+    private void btnHapusSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusSemuaActionPerformed
+        //hapus semua
+        DefaultTableModel model = (DefaultTableModel) tbKendaraan.getModel;
+        model.setRowCount(0);
+        bersihLayar();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHapusSemuaActionPerformed
 
     /**
      * @param args the command line arguments
