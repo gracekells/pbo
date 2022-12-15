@@ -61,6 +61,7 @@ public class FrmKendaraan extends javax.swing.JFrame {
         tbKendaraan = new javax.swing.JTable();
         rbYa = new javax.swing.JRadioButton();
         rbTidak = new javax.swing.JRadioButton();
+        btnHapusSemua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,6 +171,13 @@ public class FrmKendaraan extends javax.swing.JFrame {
 
         buttonGroup1.add(rbTidak);
         rbTidak.setText("Tidak");
+        rbTidak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbTidakActionPerformed(evt);
+            }
+        });
+
+        btnHapusSemua.setText("HAPUS SEMUA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,9 +186,11 @@ public class FrmKendaraan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSimpan)
-                .addGap(73, 73, 73)
+                .addGap(35, 35, 35)
                 .addComponent(btnHapus)
-                .addGap(78, 78, 78)
+                .addGap(18, 18, 18)
+                .addComponent(btnHapusSemua)
+                .addGap(25, 25, 25)
                 .addComponent(btnKeluar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -245,15 +255,17 @@ public class FrmKendaraan extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtKodeKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNamaKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtNamaKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(cmbWarnaKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(cmbWarnaKendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -281,7 +293,8 @@ public class FrmKendaraan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
                     .addComponent(btnHapus)
-                    .addComponent(btnKeluar))
+                    .addComponent(btnKeluar)
+                    .addComponent(btnHapusSemua))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
@@ -359,8 +372,20 @@ public class FrmKendaraan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void rbYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbYaActionPerformed
+        member = "Ya";
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_rbYaActionPerformed
+
+    private void rbTidakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTidakActionPerformed
+        member = "Tidak";
+        
+        int harga = Integer.parseInt(txtHargaSewa.getText());
+        int lama = Integer.parseInt(txtLamaSewa.getText());
+        
+        kdrn. 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbTidakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,6 +424,7 @@ public class FrmKendaraan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnHapusSemua;
     private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnSimpan;
     private javax.swing.ButtonGroup buttonGroup1;
